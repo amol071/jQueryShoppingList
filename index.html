@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .list{
+            display: none;
+        }
+    </style>
+    <title>Shopping List jQuery</title>
+</head>
+<body>
+    <p>For this project I will be using jQuery - event listeners, .append and .remove()</p>
+
+    <form id="shoppingForm">
+        <input id="addToList" type="text"/>
+        <button type="submit">Add To List</button>
+    </form>
+
+    <h2>Shopping List:</h2>
+    <ul id="shoppingList">
+        <li class="list"></li>
+    </ul>
+
+    <script>
+        $("#shoppingForm").on('submit',function(e){
+            var text=$('#addToList').val();
+            $(".list").show();
+            $('#shoppingList').append($('<li>').append(text));
+            $('#addToList').val('');
+            e.preventDefault();
+        });
+
+        $('#shoppingList').on('dblclick','li',function(){
+            $(this).remove();
+        });
+    </script>
+</body>
+</html>
